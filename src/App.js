@@ -24,7 +24,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1 className='header'> Monsters Relodex</h1>
+      <h1 className='header'> MONSTERS RELODEX </h1>
       <Search
         handleChange={handleChange}
         placeholder='Type your monster...'
