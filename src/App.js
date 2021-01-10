@@ -24,9 +24,10 @@ function App(props) {
 
   return (
     <div className="App">
+      <h1 className='header'> Monsters Relodex</h1>
       <Search
         handleChange={handleChange}
-        placeholder='type name...'
+        placeholder='Type your monster...'
       />
       <CardList
         monster={filteredMonsters}
