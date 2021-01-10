@@ -1,7 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import CardList from './components/card-list/card-list'
+import CardList from './components/card-list/card-list';
+import Search from './components/search/search';
 
 function App(props) {
   const [monster, setMonster] = useState([])
@@ -11,15 +12,26 @@ function App(props) {
     const fetchData = async () => {
       const res = await axios('https://jsonplaceholder.typicode.com/users');
       setMonster(res.data)
-      console.log(res.data)
     };
     fetchData();
   }, []);
 
+  const filteredMonsters = monster.filter(b =>
+    b.name.toLowerCase().includes(search.toLowerCase()))
+
+  const handleChange = e => setSearch(e.target.value)
+  
+
   return (
     <div className="App">
-      <input type='search' placeholder='type name...' onChange={e => setSearch(e.target.value)}/>
-      <CardList monster={monster}/>
+      <Search
+        handleChange={handleChange}
+        placeholder='type name...'
+      />
+      <CardList
+        monster={filteredMonsters}
+      />
+
     </div>
   );
 }
